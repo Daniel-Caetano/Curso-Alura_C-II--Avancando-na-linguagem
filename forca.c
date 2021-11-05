@@ -10,7 +10,7 @@
 #include <string.h>
 
 char chutes[26];
-int tentativas = 0;
+int chutesdados = 0;
 char palavraSecreta[20];
 
 void abertura()
@@ -25,15 +25,15 @@ void chuta()
     char chute;
     printf("\nQual letra?");
     scanf(" %c", &chute);
-    chutes[tentativas] = chute;
-    tentativas++;
-    //printf("\nTENTATIVAS| %i |=| END| %i|", tentativas, (*tentativas));
+    chutes[chutesdados] = chute;
+    chutesdados++;
+    //printf("\nCHUTESDADOS| %i |=| END| %i|", chutesdados, (*chutesdados));
 }
 
 int ja_chutou(char palavraSecreta)
 {
     int achou = 0;
-    for (int j = 0; j < tentativas; j++)
+    for (int j = 0; j < chutesdados; j++)
     {
         if (palavraSecreta == chutes[j])
         {
@@ -68,10 +68,40 @@ void escolhePalavra()
     sprintf(palavraSecreta, "MELANCIA");
 }
 
+int enforcou()
+{
+    int erros = 0;
+    for (int i = 0; i < chutesdados; i++)
+    {
+        int existe = 0;
+        for (int j = 0; j < strlen(palavraSecreta); j++)
+        {
+            if (chutes[i] == palavraSecreta[j])
+            {
+                existe = 1;
+                break;
+            }
+        }
+        if (!existe)
+            erros++;
+    }
+    return erros >= 5;
+}
+
+int ganhou()
+{
+    for (int i = 0; i < strlen(palavraSecreta); i++)
+    {
+        if (!ja_chutou(palavraSecreta[i]))
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int main()
 {
-    int acertou = 0;
-    int enforcou = 0;
 
     char chute;
 
@@ -83,5 +113,5 @@ int main()
         desenhaForca();
         chuta();
 
-    } while (!acertou && !enforcou);
+    } while (!ganhou() && !enforcou());
 }
