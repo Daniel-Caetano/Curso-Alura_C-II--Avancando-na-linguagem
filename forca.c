@@ -16,7 +16,7 @@ void abertura()
     printf("/****************/\n\n");
 }
 
-void chuta(char *chutes, int tentativas)
+void chuta(char chutes, int *tentativas)
 {
     char chute;
     scanf(" %c", &chute);
@@ -61,6 +61,7 @@ int main()
             }
         }
         printf("Qual letra? ");
-        chuta(chutes, tentativas);
+        chuta(chutes, &tentativas);
+
     } while (!acertou && !enforcou);
 }
