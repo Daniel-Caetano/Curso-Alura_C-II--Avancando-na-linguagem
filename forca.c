@@ -58,6 +58,12 @@ void desenhaForca(char palavraSecreta[20], char chutes[26], int tentativas)
         }
     }
 }
+
+void escolhePalavra(char palavraSecreta[20])
+{
+    sprintf(palavraSecreta, "MELANCIA");
+}
+
 int main()
 {
     int acertou = 0;
@@ -67,14 +73,12 @@ int main()
     char chutes[26];
     int tentativas = 0;
 
-    sprintf(palavraSecreta, "MELANCIA");
-
     abertura();
+    escolhePalavra(palavraSecreta);
 
     do
     {
         desenhaForca(palavraSecreta, chutes, tentativas);
-
         chuta(&chutes, &tentativas);
 
     } while (!acertou && !enforcou);
