@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "forca.h"
+#include <time.h>
+#include <stdlib.h>
 
 char chutes[26];
 int chutesdados = 0;
@@ -66,7 +68,29 @@ void desenhaForca()
 
 void escolhePalavra()
 {
-    sprintf(palavraSecreta, "MELANCIA");
+    int randomico = 0;
+    int qtddepalavras;
+
+    FILE *f;
+    f = fopen("palavras.txt", "r");
+    if (!f)
+    {
+        printf("Banco de Dados indisponivel!!");
+        exit(1);
+    }
+    fscanf(f, "%d", &qtddepalavras);
+
+    srand(time(0));
+    randomico = rand() % qtddepalavras;
+
+    for (int i = 0; i <= randomico; i++)
+    {
+        fscanf(f, "%s", palavraSecreta);
+    }
+
+    fclose(f);
+
+    //sprintf(palavraSecreta, "MELANCIA");
 }
 int enforcou()
 {
