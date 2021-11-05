@@ -41,6 +41,23 @@ int ja_achou(char palavraSecreta, char chutes[26], int tentativas)
     return achou;
 }
 
+void desenhaForca(char palavraSecreta[20], char chutes[26], int tentativas)
+{
+    for (int i = 0; i < strlen(palavraSecreta); i++)
+    {
+        int achou = 0;
+        achou = ja_achou(palavraSecreta[i], chutes, tentativas);
+
+        if (achou)
+        {
+            printf("%c ", palavraSecreta[i]);
+        }
+        else
+        {
+            printf("_ ");
+        }
+    }
+}
 int main()
 {
     int acertou = 0;
@@ -56,20 +73,8 @@ int main()
 
     do
     {
-        for (int i = 0; i < strlen(palavraSecreta); i++)
-        {
-            int achou = 0;
-            achou = ja_achou(palavraSecreta[i], chutes, tentativas);
+        desenhaForca(palavraSecreta, chutes, tentativas);
 
-            if (achou)
-            {
-                printf("%c ", palavraSecreta[i]);
-            }
-            else
-            {
-                printf("_ ");
-            }
-        }
         chuta(&chutes, &tentativas);
 
     } while (!acertou && !enforcou);
