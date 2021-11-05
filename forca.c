@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "forca.h"
 
 char chutes[26];
 int chutesdados = 0;
@@ -67,7 +68,6 @@ void escolhePalavra()
 {
     sprintf(palavraSecreta, "MELANCIA");
 }
-
 int enforcou()
 {
     int erros = 0;
