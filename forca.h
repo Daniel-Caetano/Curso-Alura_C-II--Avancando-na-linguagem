@@ -8,3 +8,5 @@ int ja_chutou(char palavraSecreta);
 void chuta();
 void abertura();
 void adicionapalavra();
+int chutesErrados();
+int letrasExiste(char letra);

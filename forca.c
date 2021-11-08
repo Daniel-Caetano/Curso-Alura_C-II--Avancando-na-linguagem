@@ -94,22 +94,8 @@ void escolhePalavra()
 }
 int enforcou()
 {
-    int erros = 0;
-    for (int i = 0; i < chutesdados; i++)
-    {
-        int existe = 0;
-        for (int j = 0; j < strlen(palavraSecreta); j++)
-        {
-            if (chutes[i] == palavraSecreta[j])
-            {
-                existe = 1;
-                break;
-            }
-        }
-        if (!existe)
-            erros++;
-    }
-    return erros >= 5;
+
+    return chutesErrados() >= 5;
 }
 
 int ganhou()
@@ -160,6 +146,31 @@ void adicionapalavra()
     }
 }
 
+int chutesErrados()
+{
+    int erros = 0;
+    for (int i = 0; i < chutesdados; i++)
+    {
+
+        if (!letrasExiste(i))
+            erros++;
+    }
+    return erros;
+}
+
+int letrasExiste(char letra)
+{
+    int existe = 0;
+    for (int j = 0; j < strlen(palavraSecreta); j++)
+    {
+        if (chutes[letra] == palavraSecreta[j])
+        {
+            existe = 1;
+            return 1;
+        }
+    }
+    return 0;
+}
 int main()
 {
 
