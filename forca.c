@@ -28,9 +28,18 @@ void chuta()
     char chute;
     printf("\nQual letra?");
     scanf(" %c", &chute);
+
+    if (letrasExiste(chute))
+    {
+        printf("\nVoce acertou!! A palvra tem a letra %c\n", chute);
+    }
+    else
+    {
+        printf("Voce errou!! A palvra NAO tem a letra %c\n", chute);
+    }
+
     chutes[chutesdados] = chute;
     chutesdados++;
-    //printf("\nCHUTESDADOS| %i |=| END| %i|", chutesdados, (*chutesdados));
 }
 
 int ja_chutou(char palavraSecreta)
@@ -167,7 +176,7 @@ int chutesErrados()
     for (int i = 0; i < chutesdados; i++)
     {
 
-        if (!letrasExiste(i))
+        if (!letrasExiste(chutes[i]))
             erros++;
     }
     return erros;
@@ -178,7 +187,7 @@ int letrasExiste(char letra)
     int existe = 0;
     for (int j = 0; j < strlen(palavraSecreta); j++)
     {
-        if (chutes[letra] == palavraSecreta[j])
+        if (letra == palavraSecreta[j])
         {
             existe = 1;
             return 1;
@@ -188,8 +197,6 @@ int letrasExiste(char letra)
 }
 int main()
 {
-
-    char chute;
 
     abertura();
     escolhePalavra();
