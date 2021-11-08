@@ -14,7 +14,7 @@
 
 char chutes[26];
 int chutesdados = 0;
-char palavraSecreta[20];
+char palavraSecreta[TAMANHO_PALAVRA];
 
 void abertura()
 {
@@ -133,7 +133,7 @@ void adicionapalavra()
 
     if (quer == 'S')
     {
-        char novapalavra[20];
+        char novapalavra[TAMANHO_PALAVRA];
 
         printf("Digite a nova palavra, em letras maiúsculas: ");
         scanf("%s", novapalavra);
@@ -174,6 +174,43 @@ int main()
         chuta();
 
     } while (!ganhou() && !enforcou());
+    if (ganhou())
+    {
+        printf("\nParabéns, você ganhou!\n\n");
+
+        printf("       ___________      \n");
+        printf("      '._==_==_=_.'     \n");
+        printf("      .-\\:      /-.    \n");
+        printf("     | (|:.     |) |    \n");
+        printf("      '-|:.     |-'     \n");
+        printf("        \\::.    /      \n");
+        printf("         '::. .'        \n");
+        printf("           ) (          \n");
+        printf("         _.' '._        \n");
+        printf("        '-------'       \n\n");
+    }
+    else
+    {
+        printf("\nPuxa, você foi enforcado!\n");
+        printf("A palavra era **%s**\n\n", palavraSecreta);
+
+        printf("    _______________         \n");
+        printf("   /               \\       \n");
+        printf("  /                 \\      \n");
+        printf("//                   \\/\\  \n");
+        printf("\\|   XXXX     XXXX   | /   \n");
+        printf(" |   XXXX     XXXX   |/     \n");
+        printf(" |   XXX       XXX   |      \n");
+        printf(" |                   |      \n");
+        printf(" \\__      XXX      __/     \n");
+        printf("   |\\     XXX     /|       \n");
+        printf("   | |           | |        \n");
+        printf("   | I I I I I I I |        \n");
+        printf("   |  I I I I I I  |        \n");
+        printf("   \\_             _/       \n");
+        printf("     \\_         _/         \n");
+        printf("       \\_______/           \n");
+    }
 
     adicionapalavra();
 }
